@@ -1,5 +1,7 @@
 package seleniumsessions;
 
+import java.net.URL;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -59,6 +61,14 @@ public class BrowserUtil {
 	public void enterUrl(String url) {
 		if (url.contains("http")) {
 			driver.get(url);
+		} else {
+			throw new FrameworkException("URL SHOULD HAVE http(s)");
+		}
+	}
+	
+	public void enterUrl(URL url) {
+		if (String.valueOf(url).contains("http")) {
+			driver.navigate().to(url);
 		} else {
 			throw new FrameworkException("URL SHOULD HAVE http(s)");
 		}
