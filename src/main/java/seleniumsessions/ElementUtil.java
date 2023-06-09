@@ -27,5 +27,20 @@ public class ElementUtil {
 			}
 		}
 	}
+	public  void doSearch(By searchLocator, By searchSugglocator, String searchKey, String suggName)throws InterruptedException {
+		driver.findElement(searchLocator).sendKeys(searchKey);
+		Thread.sleep(4000);
+		List<WebElement> GoogleSuggList = driver.findElements(searchSugglocator);
+		System.out.println(GoogleSuggList.size());
+
+		for (WebElement e : GoogleSuggList) {
+			String Text = e.getText();
+			System.out.println(Text);
+			if (Text.contains(suggName)) {
+				e.click();
+				break;
+			}
+		}
+	}
 
 }
