@@ -1,10 +1,16 @@
 package seleniumsessions;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CustomCssSelectorConcept {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://app.hubspot.com/login/beta");
+		Thread.sleep(4000);
 		
 	//id --> #id
 		//#input-email
@@ -84,6 +90,36 @@ public class CustomCssSelectorConcept {
 	//child to parent: backward traversing -- NA
 	//child to ancestor : NA 
 	//preceding-sibling : NA 
+		
+	//following-sibling : yes 
+		//label[for='input-email'] + input (immediate following sibling)
+		//label[for='input-email'] ~ input (All the following siblings)
+		
+	//indexing in css
+		//select#Form_getForm_Country option:first-child
+		//select#Form_getForm_Country option:last-child
+		//select#Form_getForm_Country option:nth-child(5)
+		//select#Form_getForm_Country option:nth-last-child(2)
+		//select#Form_getForm_Country option:nth-child(odd)
+		//select#Form_getForm_Country option:nth-child(even)
+		//select#Form_getForm_Country option:nth-child(4n)
+		
+	//Not in CSS
+		//form-control input-lg
+		//form-control
+		//input.form-control:not(.input-lg)
+		//input.form-control:not(.input-lg):not(#input-password)
+		
+	//comma in css
+		//input#username, button#loginBtn, span#checkbox-content-3, div.signup-link -- 4 imp elements
+		By AllImpEles=By.cssSelector("input#username, button#loginBtn, span#checkbox-content-3, div.signup-link");
+		if(driver.findElements(AllImpEles).size()==4) {
+			System.out.println("imp eles present on the page....PASS");
+			
+		}
+		else {
+			System.out.println("imp not eles present on the page....FAIL");
+		}
 		
 		
 		
