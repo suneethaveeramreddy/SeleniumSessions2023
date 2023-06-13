@@ -44,7 +44,53 @@ public class CustomCssSelectorConcept {
 		//input[@placeholder='E-Mail Address'] -- Xpath 
 		
 	//More than one attribute
-		// tagname[attr1='value'][attr2='value']
+		// tagname[attr1='value'][attr2='value'][attr3='value']
+		// input[type='text'][name='email'][placeholder='E-Mail Address']
+		// input[type][name][placeholder]
+		// [id] -- CSS selector
+		// //*[@id]
+		// input[id]
+		
+	//text in css: NA
+		
+		//CSS3 
+		
+	//Contains in css:
+		// tag[attr*='value']
+		//input[placeholder*='Address'] -- css
+		//input[contains(@class,'Address')] -- xpath
+		//input[placeholder*='Address'][id='input-email']
+		//input[placeholder*='Address'][id^='input']
+		//input[placeholder*='Address'][id^='input'][class$='control']
+		//input[placeholder*='Address'][class$='control']#input-email
+		
+	//startswith in css:
+		//tag[attr^='value']
+		//input[placeholder^='E-Mail'] -- css
+		//input[starts-with(@placeholder,'E-Mail')]  -- xpath
+		
+	//endswith in css:
+		//tag[attr$='value']
+		//input[placeholder$='Address'] --- css
+		//input[ends-with(@placeholder,'Address')]
+		
+	//parent-child:
+		//select#Form_getForm_Country > option ---> direct child elements
+		//select#Form_getForm_Country option  ----> direct + indirect child elements
+		// form > div ---> 2 child divs which are directly associated 
+		// form div ---> (direct+indirect child)
+		// table#resultTable td
+		
+	//child to parent: backward traversing -- NA
+	//child to ancestor : NA 
+	//preceding-sibling : NA 
+		
+		
+		
+		
+		
+	
+		
 		
 	}
 
