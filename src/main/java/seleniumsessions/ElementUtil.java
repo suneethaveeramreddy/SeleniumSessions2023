@@ -18,6 +18,9 @@ public class ElementUtil {
 	public WebElement getElement(By locator) {
 		return driver.findElement(locator);
 	}
+	public List<WebElement> getElements(By locator) {
+		return driver.findElements(locator);
+	}
 	public void clickOnElement(By locator, String LinkText) {
 		List<WebElement> LinksList = driver.findElements(locator);
 		System.out.println("Total number of links " + LinksList.size());
@@ -92,6 +95,17 @@ public class ElementUtil {
 	public void doSelectDropDownValue(By locator, String dropdownValue) {
 		Select select=new Select(getElement(locator));
 		List<WebElement> optionsList=select.getOptions();
+		for(WebElement e: optionsList) {
+			String text=e.getText();
+			System.out.println(text);
+			if(text.equals(dropdownValue)) {
+				e.click();
+				break;
+			}
+		}
+	}
+	public void doSelectDropDownValueUsingLocator(By locator, String dropdownValue) {
+		List<WebElement> optionsList=getElements(locator);
 		for(WebElement e: optionsList) {
 			String text=e.getText();
 			System.out.println(text);
