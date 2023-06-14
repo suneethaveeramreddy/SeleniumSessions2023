@@ -89,5 +89,17 @@ public class ElementUtil {
 		}
 		return optionsTextList;
 	}
+	public void doSelectDropDownValue(By locator, String dropdownValue) {
+		Select select=new Select(getElement(locator));
+		List<WebElement> optionsList=select.getOptions();
+		for(WebElement e: optionsList) {
+			String text=e.getText();
+			System.out.println(text);
+			if(text.equals(dropdownValue)) {
+				e.click();
+				break;
+			}
+		}
+	}
 
 }
