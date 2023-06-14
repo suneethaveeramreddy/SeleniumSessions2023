@@ -1,5 +1,6 @@
 package seleniumsessions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -72,6 +73,21 @@ public class ElementUtil {
 		Select select=new Select(getElement(locator));
 		select.selectByVisibleText(value);
 		
+	}
+	public int getDropDownOptionsCount(By locator) {
+		Select select = new Select(getElement(locator));
+		return select.getOptions().size();
+	}
+	public List<String> getDropDownTextList(By locator) {
+		Select select = new Select(getElement(locator));
+		List<WebElement> optionsList = select.getOptions();
+		List<String> optionsTextList = new ArrayList<String>(); 
+		for (WebElement e : optionsList) {
+			String text = e.getText();
+			System.out.println(text);
+			optionsTextList.add(text);
+		}
+		return optionsTextList;
 	}
 
 }
