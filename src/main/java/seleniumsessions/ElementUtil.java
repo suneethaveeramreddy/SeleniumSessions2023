@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class ElementUtil {
 
@@ -13,7 +14,9 @@ public class ElementUtil {
 	public static void main(String[] args) {
 
 	}
-
+	public WebElement getElement(By locator) {
+		return driver.findElement(locator);
+	}
 	public void clickOnElement(By locator, String LinkText) {
 		List<WebElement> LinksList = driver.findElements(locator);
 		System.out.println("Total number of links " + LinksList.size());
@@ -41,6 +44,34 @@ public class ElementUtil {
 				break;
 			}
 		}
+	}
+	//*****************************Drop Down Utils***********************************************//
+	public void doSelectDropDownByIndex(By locator,int index) {
+		if(index<0) {
+			System.out.println("please pass the right (+ve) index");
+			return;
+		}
+		Select select=new Select(getElement(locator));
+		select.selectByIndex(index);
+		
+	}
+	public void doSelectDropDownByVisibleText(By locator,String visibleText) {
+		if(visibleText==null) {
+			System.out.println("please pass the right visible text and it can not be null");
+			return;
+		}
+		Select select=new Select(getElement(locator));
+		select.selectByVisibleText(visibleText);
+		
+	}
+	public void doSelectDropDownByValue(By locator,String value) {
+		if(value==null) {
+			System.out.println("please pass the right visible text and it can not be null");
+			return;
+		}
+		Select select=new Select(getElement(locator));
+		select.selectByVisibleText(value);
+		
 	}
 
 }
