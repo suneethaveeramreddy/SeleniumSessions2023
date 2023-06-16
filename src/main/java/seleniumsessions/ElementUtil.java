@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ElementUtil {
@@ -114,6 +115,21 @@ public class ElementUtil {
 				break;
 			}
 		}
+	}
+	//******************************Actions utils******************************************//
+	public void selectRightClickOptions(By contextMenuLocator, String optionValue) {
+		Actions act = new Actions(driver);
+		act.contextClick(getElement(contextMenuLocator)).build().perform();
+		By optionLocator=By.xpath("//*[text()='"+optionValue+"']");
+		getElement(optionLocator).click(); // need to replace with doClick method
+
+	}
+	public void twoLevelMenuHandling(By level1MenuLocator,By level2MenuLocator) throws InterruptedException {
+		Actions act=new Actions(driver);
+		act.moveToElement(getElement(level1MenuLocator)).perform();
+		Thread.sleep(3000);
+		getElement(level2MenuLocator).click();
+		
 	}
 
 }
