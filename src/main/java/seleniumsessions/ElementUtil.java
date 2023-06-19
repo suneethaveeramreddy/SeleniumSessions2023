@@ -128,7 +128,7 @@ public class ElementUtil {
 		Actions act=new Actions(driver);
 		act.moveToElement(getElement(level1MenuLocator)).perform();
 		Thread.sleep(3000);
-		getElement(level2MenuLocator).click();
+		getElement(level2MenuLocator).click(); // need to replace with doClick method
 		
 	}
 
