@@ -32,7 +32,7 @@ public class ActionsScrolling {
 		//act.sendKeys(Keys.CONTROL).sendKeys(Keys.END).perform();
 		
 		//scrollToElement:
-		act.scrollToElement(driver.findElement(By.linkText("Help"))).perform();
+		act.scrollToElement(driver.findElement(By.linkText("Help"))).click();
 		
 		
 
