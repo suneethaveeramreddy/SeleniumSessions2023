@@ -14,6 +14,10 @@ public class BasicAuthPopUp {
 		WebDriver driver=new ChromeDriver();
 		driver.get("https://"+username+":"+Password+"@the-internet.herokuapp.com/basic_auth");
 		
+		//basic auth?
+		//username:password -->encoded string
+		//btoa("username:password") --> TWTFDFD%R"%$%&'"&
+		
 		
 
 	}
