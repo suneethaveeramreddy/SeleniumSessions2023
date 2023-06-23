@@ -13,12 +13,15 @@ public class NestedIframesHandle {
 		driver.get("https://selectorshub.com/iframe-scenario/");
 		Thread.sleep(2000);
 		
+		//f1
 		driver.switchTo().frame("pact1");
 		driver.findElement(By.id("inp_val")).sendKeys("Entered first Crush");
 		Thread.sleep(3000);
+		//f2
 		driver.switchTo().frame("pact2");
 		driver.findElement(By.id("jex")).sendKeys("Second Crush");
 		
+		//f3
 		driver.switchTo().frame("pact3");
 		driver.findElement(By.id("glaf")).sendKeys("Destiny Crush");
 		

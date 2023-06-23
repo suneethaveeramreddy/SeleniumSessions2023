@@ -23,10 +23,10 @@ public class iframeHandle {
 		driver.findElement(By.id("RESULT_TextField-8")).sendKeys("suneetha");
 		driver.findElement(By.id("RESULT_TextField-9")).sendKeys("Veeram Reddy");
 		
-		//coming back to the main page
-		driver.switchTo().defaultContent();
+		//coming back to the main page/browser context:
+		//driver.switchTo().parentFrame();
 		
-		//page element
+		driver.switchTo().defaultContent();
 		String tooltipText=driver.findElement(By.xpath("//p[@id='tooltip']")).getText();
 		System.out.println(tooltipText);
 
