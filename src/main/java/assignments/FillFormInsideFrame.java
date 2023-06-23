@@ -1,10 +1,10 @@
-package seleniumsessions;
+package assignments;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class iframeHandle {
+public class FillFormInsideFrame {
 
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver = new ChromeDriver();
@@ -19,7 +19,8 @@ public class iframeHandle {
 		//switch to frame
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[starts-with(@id,'frame-one')]")));
 		
-		//frame element
+		//frame elements
+		driver.findElement(By.id("RESULT_TextField-1")).sendKeys("");
 		driver.findElement(By.id("RESULT_TextField-8")).sendKeys("suneetha");
 		driver.findElement(By.id("RESULT_TextField-9")).sendKeys("Veeram Reddy");
 		
@@ -29,6 +30,7 @@ public class iframeHandle {
 		//page element
 		String tooltipText=driver.findElement(By.xpath("//p[@id='tooltip']")).getText();
 		System.out.println(tooltipText);
+
 
 	}
 
