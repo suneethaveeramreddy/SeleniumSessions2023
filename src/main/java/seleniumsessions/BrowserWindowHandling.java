@@ -16,6 +16,7 @@ public class BrowserWindowHandling {
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//a[contains(@href,'linkedin')]")).click();
 		
+		//fetching the window IDs:
 		Set<String> handles = driver.getWindowHandles();
 		Iterator<String> it = handles.iterator();
 		String parentWindowId = it.next();
