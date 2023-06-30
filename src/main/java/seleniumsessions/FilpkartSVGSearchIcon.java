@@ -14,8 +14,9 @@ public class FilpkartSVGSearchIcon {
 		driver.get("https://www.flipkart.com/");
 		Thread.sleep(3000);
 		
+		driver.findElement(By.xpath("//button[@class='_2KpZ6l _2doB4z']")).click();
 		driver.findElement(By.name("q")).sendKeys("Macbook Pro");
-		driver.findElement(By.xpath("//*[local-name()='svg']//*[name()='g' and @fill-rule='evenodd']"));
+		driver.findElement(By.xpath("//*[local-name()='svg']//*[name()='g' and @fill-rule='evenodd']")).click();
 	}
 
 }
