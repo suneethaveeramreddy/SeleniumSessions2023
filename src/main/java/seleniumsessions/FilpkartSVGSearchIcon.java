@@ -3,6 +3,7 @@ package seleniumsessions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class FilpkartSVGSearchIcon {
 
@@ -16,7 +17,11 @@ public class FilpkartSVGSearchIcon {
 		
 		driver.findElement(By.xpath("//button[@class='_2KpZ6l _2doB4z']")).click();
 		driver.findElement(By.name("q")).sendKeys("Macbook Pro");
-		driver.findElement(By.xpath("//*[local-name()='svg']//*[name()='g' and @fill-rule='evenodd']")).click();
+		Actions act=new Actions(driver);
+		act
+		.moveToElement(driver.findElement(By.xpath("//*[local-name()='svg']//*[name()='g' and @fill-rule='evenodd']")))
+		.click().build().perform();
+		
 	}
 
 }
