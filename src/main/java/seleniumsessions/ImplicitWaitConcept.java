@@ -36,6 +36,12 @@ public class ImplicitWaitConcept {
 
 		//registration page : 0 secs: nullification of implicitly wait 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+		
+		//un - 10
+		//pwd - 5
+		//login - 20 
+		//ele - 0
+		//won't for non web elements : title, url, alert 
 	}
 
 }
