@@ -159,5 +159,68 @@ public class ElementUtil {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		
 	}
+	public String waitForURLContains(String urlFraction, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.urlContains(urlFraction))) {
+				return driver.getCurrentUrl();
+			} else {
+				System.out.println(urlFraction + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(urlFraction + " title value is not present....");
+			return null;
+		}
+	}
+	
+	public String waitForURLToBe(String urlValue, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.urlToBe(urlValue))) {
+				return driver.getCurrentUrl();
+			} else {
+				System.out.println(urlValue + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(urlValue + " title value is not present....");
+			return null;
+		}
+	}
+
+	public String waitForTitleContains(String titleFraction, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.titleContains(titleFraction))) {
+				return driver.getTitle();
+			} else {
+				System.out.println(titleFraction + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(titleFraction + " title value is not present....");
+			return null;
+		}
+	}
+
+	public String waitForTitleIs(String titleValue, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.titleIs(titleValue))) {
+				return driver.getTitle();
+			} else {
+				System.out.println(titleValue + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(titleValue + " title value is not present....");
+			return null;
+		}
+	}
 
 }

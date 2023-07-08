@@ -20,14 +20,71 @@ public class WaitForTitleUrl {
 //		if (wait.until(ExpectedConditions.titleContains("Free CRM"))) {
 //			System.out.println(driver.getTitle());
 //		}
-		
-		waitForTitleContains("Free CRM", 5);
+
+		waitForTitleContains("Free CRM11", 5);
 	}
 	
-
-	public static Boolean waitForTitleContains(String titleFraction, int timeOut) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		return wait.until(ExpectedConditions.titleContains(titleFraction));
+	public static String waitForURLContains(String urlFraction, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.urlContains(urlFraction))) {
+				return driver.getCurrentUrl();
+			} else {
+				System.out.println(urlFraction + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(urlFraction + " title value is not present....");
+			return null;
+		}
+	}
+	
+	public static String waitForURLToBe(String urlValue, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.urlContains(urlValue))) {
+				return driver.getCurrentUrl();
+			} else {
+				System.out.println(urlValue + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(urlValue + " title value is not present....");
+			return null;
+		}
 	}
 
+	public static String waitForTitleContains(String titleFraction, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.titleContains(titleFraction))) {
+				return driver.getTitle();
+			} else {
+				System.out.println(titleFraction + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(titleFraction + " title value is not present....");
+			return null;
+		}
+	}
+
+	public static String waitForTitleIs(String titleValue, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		try {
+			if (wait.until(ExpectedConditions.titleContains(titleValue))) {
+				return driver.getTitle();
+			} else {
+				System.out.println(titleValue + " title value is not present....");
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(titleValue + " title value is not present....");
+			return null;
+		}
+	}
 }
