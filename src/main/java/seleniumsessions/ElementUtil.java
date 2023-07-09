@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -159,6 +160,12 @@ public class ElementUtil {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		
 	}
+	/**
+	 * An expectation for the URL of the current page to contain specific text.
+	 * @param urlFraction
+	 * @param timeOut
+	 * @return
+	 */
 	public String waitForURLContains(String urlFraction, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		try {
@@ -174,7 +181,12 @@ public class ElementUtil {
 			return null;
 		}
 	}
-	
+	/**
+	 * An expectation for the URL of the current page to be a specific url.
+	 * @param urlValue
+	 * @param timeOut
+	 * @return
+	 */
 	public String waitForURLToBe(String urlValue, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		try {
@@ -190,7 +202,12 @@ public class ElementUtil {
 			return null;
 		}
 	}
-
+	/**
+	 * An expectation for checking that the title contains a case-sensitive substring
+	 * @param titleFraction
+	 * @param timeOut
+	 * @return
+	 */
 	public String waitForTitleContains(String titleFraction, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		try {
@@ -206,7 +223,12 @@ public class ElementUtil {
 			return null;
 		}
 	}
-
+	/**
+	 * An expectation for checking the title of a page.
+	 * @param titleValue
+	 * @param timeOut
+	 * @return
+	 */
 	public String waitForTitleIs(String titleValue, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		try {
@@ -221,6 +243,38 @@ public class ElementUtil {
 			System.out.println(titleValue + " title value is not present....");
 			return null;
 		}
+	}
+	/**
+	 * An expectation for the alert (JS) to be appeared on the page.
+	 * @param timeOut
+	 * @return
+	 */
+	public Alert waitForJSAlert(int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.alertIsPresent());
+	}
+	
+	public Boolean waitForNumberOfBrowserWindows(int timeOut, int numberOfWindowsToBe) {
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.numberOfWindowsToBe(numberOfWindowsToBe));
+	}
+	
+	public void  waitForFrameByLocator(By framelocator,int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(framelocator));
+	}
+	
+	public void  waitForFrameByIndex(int frameIndex,int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameIndex));
+	}
+	public void  waitForFrameByFrameNameOrID(String frameNameOrID,int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameNameOrID));
+	}
+	public void  waitForFrameByFrameElement(WebElement frameElement,int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
 	}
 
 }
