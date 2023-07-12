@@ -292,5 +292,14 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
 	}
+	/**
+	 * An expectation for checking an element is visible and enabled such that you can click it.
+	 * @param locator
+	 * @param timeOut
+	 */
+	public void clickElementWhenReady(By locator, int timeOut) {
+		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+	}
 
 }
