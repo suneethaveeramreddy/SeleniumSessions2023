@@ -147,6 +147,10 @@ public class ElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
+	public WebElement waitForElementPresence(By locator, int timeOut,int pollingTime) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut),Duration.ofSeconds(pollingTime));
+		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
 	/**
 	 * An expectation for checking that an element is present on the DOM of a page and visible.
 	 * Visibility means that the element is not only displayed
@@ -157,6 +161,11 @@ public class ElementUtil {
 	 */
 	public WebElement waitForElementVisible(By locator, int timeOut) {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		
+	}
+	public WebElement waitForElementVisible(By locator, int timeOut,int pollingTime) {
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(timeOut),Duration.ofSeconds(pollingTime));
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		
 	}
@@ -267,6 +276,10 @@ public class ElementUtil {
 	 */
 	public Alert waitForJSAlert(int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.alertIsPresent());
+	}
+	public Alert waitForJSAlert(int timeOut,int pollingTime) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut), Duration.ofSeconds(pollingTime));
 		return wait.until(ExpectedConditions.alertIsPresent());
 	}
 	
