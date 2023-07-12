@@ -13,7 +13,7 @@ public class WaitForElementAndClick {
 		//clickable elements:
 		static WebDriver driver;
 		public static void main(String[] args) throws InterruptedException {
-			WebDriver driver = new ChromeDriver();
+			driver = new ChromeDriver();
 			driver.get("https://classic.crmpro.com/");
 			Thread.sleep(3000);
 			driver.findElement(By.name("username")).sendKeys("suneethav");
