@@ -3,14 +3,19 @@ package seleniumsessions;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtil {
@@ -314,5 +319,37 @@ public class ElementUtil {
 		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
 	}
-
+	//**************************FluentWait Utils******************************//
+	public WebElement waitForElementVisibleWithFluentWait(By locator,int timeOut,int pollingTime) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(timeOut))
+				.pollingEvery(Duration.ofSeconds(pollingTime))
+				.ignoring(NoSuchElementException.class)
+				.withMessage("----time out is done....element is not found..." + locator);
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	public WebElement waitForElementPresenceWithFluentWait(By locator,int timeOut,int pollingTime) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(timeOut))
+				.pollingEvery(Duration.ofSeconds(pollingTime))
+				.ignoring(NoSuchElementException.class)
+				.withMessage("----time out is done....element is not found..." + locator);
+		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+	public Alert waitForJSAlertWithFluentWait(int timeOut,int pollingTime) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(timeOut))
+				.pollingEvery(Duration.ofSeconds(pollingTime))
+				.ignoring(NoAlertPresentException.class)
+				.withMessage("----time out is done....JS alert is not found..." );
+		return wait.until(ExpectedConditions.alertIsPresent());
+	}
+	public void waitForFrameWithFluentWait(String frameNameOrID,int timeOut,int pollingTime) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+				.withTimeout(Duration.ofSeconds(timeOut))
+				.pollingEvery(Duration.ofSeconds(pollingTime))
+				.ignoring(NoSuchFrameException.class)
+				.withMessage("----time out is done....Frame is not found...with name or ID: " +frameNameOrID );
+		 wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameNameOrID));
+	}
 }
