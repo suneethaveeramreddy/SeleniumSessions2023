@@ -22,10 +22,6 @@ public class ElementUtil {
 
 	private WebDriver driver;
 
-	public static void main(String[] args) {
-
-	}
-
 	public WebElement getElement(By locator) {
 		return driver.findElement(locator);
 	}
